@@ -2,8 +2,8 @@
 logo_image_source: http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg
 
 # Index Page
-index_banner_text: Welcome to Anodyne
-index_banner_text_secondary: Create Websites. Make Magic.
+index_banner_text: qiuchunhong.github.io
+index_banner_text_secondary: 前端学习，积少成多！！！
 index_font_awesome_icon_css: fa fa-magic
 
 # Header
@@ -25,7 +25,7 @@ archive_font_awesome_icon_css: fa-folder-open
 
 # About Widget
 about_widget_avatar_url: http://tachyons.io/img/avatar_1.jpg
-about_widget_text: "My name is Jonathan Klughertz and this is my blog.<br>I am a full stack software engineer with a strong front-end focus.<br> I currently live and work in Singapore, hit me up if you are in the region."
+# about_widget_text: "My name is Jonathan Klughertz and this is my blog.<br>I am a full stack software engineer with a strong front-end focus.<br> I currently live and work in Singapore, hit me up if you are in the region."
 
 
 # Comments.
