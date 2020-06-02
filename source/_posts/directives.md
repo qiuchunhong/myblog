@@ -1,7 +1,7 @@
 ---
 title: vue directive 指令
 categories: vue
-tags: [] #文章标签，可空，多标签请用格式，注意:后面有个空格
+tags: [vue] #文章标签，可空，多标签请用格式，注意:后面有个空格
 description: directive的使用以及记录指令的场景、实现
 ---
 
