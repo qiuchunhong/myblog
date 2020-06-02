@@ -1,5 +1,5 @@
 # Logo
-logo_image_source: http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg
+logo_image_source: /assets/anodyne.svg
 
 # Index Page
 index_banner_text: qiuchunhong.github.io
@@ -8,12 +8,13 @@ index_font_awesome_icon_css: fa fa-magic
 
 # Header
 menu:
-  Home: /
-  Archives: /archives
-  Tags: /tags
-  Categories: /categories
-  About: /about.html
-  Contact: /contact.html
+  '首页': /
+  '列表': /archives
+  '标签': /tags
+  # Categories: /categories
+  # About: /about.html
+  # Contact: /contact.html
+  'css技巧': /cssEffects
 
 # Post
 default_post_title: Untitled
@@ -24,14 +25,13 @@ archive_date_format: MMM YYYY
 archive_font_awesome_icon_css: fa-folder-open
 
 # About Widget
-about_widget_avatar_url: http://tachyons.io/img/avatar_1.jpg
+about_widget_avatar_url: /assets/avatar_1.jpg
 # about_widget_text: "My name is Jonathan Klughertz and this is my blog.<br>I am a full stack software engineer with a strong front-end focus.<br> I currently live and work in Singapore, hit me up if you are in the region."
-
 
 # Comments.
 comments:
   # Disqus comments
-  disqus_shortname: 
+  disqus_shortname:
 
 # Google Analytics Tracking ID
 google_analytics:
@@ -43,7 +43,7 @@ social_platforms:
   - url: https://www.facebook.com/
     fa_icon: fa-facebook
   - url: https://dribbble.com/
-    fa_icon: fa-dribbble 
+    fa_icon: fa-dribbble
   - url: https://github.com/klugjo/hexo-theme-anodyne
     fa_icon: fa-github
   - url: https://plus.google.com/
@@ -58,4 +58,4 @@ social_platforms:
     fa_icon: fa-rss
 
 # Footer about
-footer_about: "@Untitled. All right reserved | Design & Hexo <a class=\"link dim white\" href=\"http://www.codeblocq.com/\">Jonathan Klughertz</a>"
+footer_about: '@Untitled. All right reserved | Design & Hexo <a class="link dim white" href="http://www.codeblocq.com/">Jonathan Klughertz</a>'
