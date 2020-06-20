@@ -37,4 +37,10 @@ More info: [Generating](https://hexo.io/docs/generating.html)
 $ hexo deploy
 ```
 
+### 如出现缓存引起的异常，可在生成命令执行前执行清除缓存命令
+
+```bash
+$ hexo clean
+```
+
 More info: [Deployment](https://hexo.io/docs/one-command-deployment.html)
