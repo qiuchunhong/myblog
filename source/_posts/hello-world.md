@@ -43,4 +43,6 @@ $ hexo deploy
 $ hexo clean
 ```
 
+### [hexo 文档](https://hexo.io/zh-cn/docs/)
+
 More info: [Deployment](https://hexo.io/docs/one-command-deployment.html)
