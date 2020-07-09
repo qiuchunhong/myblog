@@ -18,6 +18,7 @@
 <%- partial('_partial/banner.ejs', {
     mainText: page.title || theme.default_post_title || title || __('default_post_title'),
     secondaryText: page.date && !isTagOrCat ? page.date.format(config.date_format) : '',
+    description: page.description || '',
     faIconCss: page.icon || theme.default_post_icon || ''
 }) %>
 
