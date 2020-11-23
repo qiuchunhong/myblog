@@ -1,7 +1,7 @@
 ---
 title: git
-tags: [git]
 categories: git
+tags: [git]
 summary: 工作区、暂存区、本地仓库、远程仓库的理解，git的常用命令总结.
 ---
 

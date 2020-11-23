@@ -1,6 +1,6 @@
 ---
 title: JavaScript 中的相等操作符 ( 详解 [] == []、[] == ![]、{} == !{} )
-categories: 
+categories: js
 tags: [js] #文章标签，可空，多标签请用格式，注意:后面有个空格
 summary: 
 ---
