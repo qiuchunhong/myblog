@@ -2,7 +2,7 @@
 title: js 中 call()、apply()、bind()
 categories: js
 tags: [js] #文章标签，可空，多标签请用格式，注意:后面有个空格
-description: call()、apply()、bind() 都是用来重定义this这个对象的。
+summary: call()、apply()、bind() 都是用来重定义this这个对象的。
 ---
 
 ```

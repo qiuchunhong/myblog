@@ -1,8 +1,8 @@
 ---
 title: git
-date: 2020-07-09 14:17:31
-tags:
-description: 工作区、暂存区、本地仓库、远程仓库的理解，git的常用命令总结，
+tags: [git]
+categories: git
+summary: 工作区、暂存区、本地仓库、远程仓库的理解，git的常用命令总结.
 ---
 
 

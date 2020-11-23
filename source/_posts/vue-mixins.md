@@ -2,7 +2,7 @@
 title: vue中mixins的理解及使用
 categories: vue extends mixins
 tags: [vue] #文章标签，可空，多标签请用格式，注意:后面有个空格
-description: 混合对象可以包含任意组件选项。<br />当组件使用混合对象时，所有混合对象的选项将被混入该组件本身的选项。
+summary: 混合对象可以包含任意组件选项。<br />当组件使用混合对象时，所有混合对象的选项将被混入该组件本身的选项。
 ---
 
 ## Vue 中 mixin 和 mixins 的区别

@@ -2,7 +2,7 @@
 title: css预处理器 - sass #文章页面上的显示名称，一般是中文
 categories: html+css #分类
 tags: [css,sass] #文章标签，可空，多标签请用格式，注意:后面有个空格
-description: css预处理器主要是sass的相关操作
+summary: css预处理器主要是sass的相关操作
 ---
 
 > css预处理器包含：sass, lass
