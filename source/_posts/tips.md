@@ -2,7 +2,7 @@
 title: 记录一些小技巧
 categories: vue
 tags: [vue] #文章标签，可空，多标签请用格式，注意:后面有个空格
-description: forceUpdate、git reset、
+summary: forceUpdate、git reset、
 ---
 
 ## vue

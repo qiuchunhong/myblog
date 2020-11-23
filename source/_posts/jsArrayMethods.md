@@ -2,7 +2,7 @@
 title: js Array 方法总结 #文章页面上的显示名称，一般是中文
 categories: js #分类
 tags: [js] #文章标签，可空，多标签请用格式，注意:后面有个空格
-description: 
+summary: 
 ---
 
 

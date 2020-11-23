@@ -2,7 +2,7 @@
 title: css兼容问题
 categories: css
 tags: [css] #文章标签，可空，多标签请用格式，注意:后面有个空格
-description: 
+summary: 
 ---
 
 ### css的选择符

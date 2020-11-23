@@ -2,7 +2,7 @@
 title: reduce - js #文章页面上的显示名称，一般是中文
 categories: js #分类
 tags: [js, reduce] #文章标签，可空，多标签请用格式，注意:后面有个空格
-description: reduce方法 && reduce实例
+summary: reduce方法 && reduce实例
 ---
 
 > **reduce()** 方法对数组中的每个元素执行一个由您提供的 reducer 函数(升序执行)，将其结果汇总为单个返回值。
