@@ -87,3 +87,13 @@ vi语法：
   w ->  保存
   q ->  退出
   :wq ->  保存并退出
+
+
+##### 查看分支是从哪个分支创建的
+```
+git reflog --date=local | grep <branchname>
+
+git reflog --date=local   // 查看本机git操作记录
+git reflog show  --date=iso youhua  // 查看'youhua'分支所有git操作记录
+```
+[show]可写可不写
