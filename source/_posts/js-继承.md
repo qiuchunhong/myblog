@@ -7,7 +7,7 @@ summary: 继承是为了子类可以使用父类的所有功能，并且能对�
 
 ## 继承
 > 下面代码中，b是B类的实例，它的constructor方法就是B类原型的constructor方法。
-```
+```javascript
 class B {}  // === function B(){}
 let b = new B();
 
@@ -15,7 +15,7 @@ b.constructor === B.prototype.constructor // true
 ```
 
 > 由于类的方法都定义在prototype对象上面，所以类的新方法可以添加在prototype对象上面。Object.assign方法可以很方便地一次向类添加多个方法。
-```
+```javascript
 // es5写法
 function U(){}
 U.prototype.say = function(){console.log('hi')}
@@ -29,7 +29,7 @@ p.say()
 ```
 
 **实例1**
-```
+```javascript
 class Point {
   constructor(x,y){
     this.x = x;
@@ -58,11 +58,11 @@ a.say();  //x=12, y=3, color=green, x+y=15
 console.log( a instanceof ColorPoint );  // true
 console.log( a instanceof Point ); // true
 ColorPoint.hello(); // hello world
-
 ```
+
 **解析：**
 - super()必须写到子类的constructor中的最上方。只有调用super之后，才可以使用this关键字，否则会报错。这是因为子类实例的构建，基于父类实例，只有super方法才能调用父类实例。如果子类没有定义constructor方法，这个方法会被默认添加，代码如下
-```
+```javascript
 class ColorPoint extends Point {
 }
 // 等同于
@@ -75,7 +75,7 @@ class ColorPoint extends Point {
 > - super作为函数时，super()只能用在子类的构造函数之中，用在其他地方就会报错。
 > - super作为对象时，在普通方法中，指向父类的原型对象；在静态方法中，指向父类。
 
-```
+```javascript
 class A {
   constructor() {
     this.x = 1;

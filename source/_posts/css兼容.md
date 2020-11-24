@@ -19,7 +19,7 @@ summary:
 11. 伪类选择器：链接伪类(:link\:visited\:target)、动态伪类(:hover\:active) LVHA、表单相关伪类(:enabled\:disable\:checked\:focus)、结构性伪类(:nth-child(2n)\:first-child\:last-child\nth-last-child(index)\:only-child\:nth-of-type(index)\:first-of-type\:last-of-type\nth-last-type(index)\:only-of-type\:not\:empty)
 
 ### input disabled后手机端颜色比设置的浅
-```
+```css
 input:disabled, input[disabled]{
     color: red;
     -webkit-text-fill-color:red;
@@ -28,7 +28,7 @@ input:disabled, input[disabled]{
 }
 ```
 ### 一个文字渐变效果
-```
+```css
 .text-fill-color{
     background:-webkit-linear-gradient(top,#eee,#aaa 50%,#333 51%,#000);
 	-webkit-background-clip:text;
@@ -38,4 +38,4 @@ input:disabled, input[disabled]{
 }
 <div class="text-fill-color">text-fill-color</div>
 ```
-![一个文字渐变效果](./css兼容/gradient.png)
+![一个文字渐变效果](./gradient.png)

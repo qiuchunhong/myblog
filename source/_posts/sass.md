@@ -1,6 +1,6 @@
 ---
 title: css预处理器 - sass #文章页面上的显示名称，一般是中文
-categories: html+css #分类
+categories: css #分类
 tags: [css,sass] #文章标签，可空，多标签请用格式，注意:后面有个空格
 summary: css预处理器主要是sass的相关操作
 ---
@@ -13,7 +13,7 @@ summary: css预处理器主要是sass的相关操作
 ## 保持sass条理性和可读性最基本三个方法：[嵌套](#nest)、[导入](#import)、[注释](#annotation)
 ### 变量
 > 变量跟es6中的let一样具有块级作用域，必须先定义后使用。 **less变量用的是<font color=#ec7259>@</font>**
-```
+```css
 $color:red;
 $fontSize:16px;
 $color:blue;
@@ -25,7 +25,7 @@ $color:green;
 ```
 ### <font id="nest">嵌套</font>
 例1
-```
+```css
 .data{
     & > ul{                       //.data > ul       
         .li{
@@ -38,7 +38,7 @@ $color:green;
 }
 ```
 例2        嵌套属性
-```
+```css
 .nav{
     border: {
         style:solid;
@@ -48,7 +48,7 @@ $color:green;
 }    ==>.nav{border:1px solid red;}
 ```
 例3
-```
+```css
 .nav{
     border: 1px solid #ccc {
       left: 0px;
@@ -65,7 +65,7 @@ $color:green;
 > 例：想导入style/_night-sky.scss    =>@import "style/night-sky"
 
 > 导入文件又要修改文件中的全局变量：**<font color=#ec7259>!default</font>**
-```
+```css
 $c:pink;
 @import 'src/assets/css/ab';
 _ab.scss:
@@ -78,7 +78,7 @@ _ab.scss:
 > .c{color/*这块注释也不会出现在生成的css文件中*/ :red;}   
 
 ### 混合器
-```
+```css
 @mixin background($color) {
     background: $color;
 }
@@ -87,7 +87,7 @@ body{
 }
 ```
 例2：
-```
+```css
 @mixin link-colors($normal:blue, $hover:red, $visited:green) {    //声明
     color: $normal;
     &:hover { color: $hover; }
@@ -100,7 +100,7 @@ body{
 > **less:声明：<font color=#ec7259>.className{}</font> 调用：<font color=#ec7259>.className()</font>**
 
 ### 继承
-```
+```css
 .redC{
     background:red;
     margin:10px;
@@ -119,11 +119,11 @@ body{
 > 在有引号的文本字符串中使用 #{} 插值语句可以添加动态的值。使用 #{}可以避免 Sass 运行运算表达式，直接编译 CSS
 
 例1：
-```
+```css
 p:before {content: "I ate #{5 + 10} pies!";}=>p:before { content: "I ate 15 pies!"; }
 ```
 例2
-```
+```css
 @mixin mar($dir,$size){margin-#{$dir} : $size;}
 .cont{@include mar('left',20px)}
 ```
@@ -131,7 +131,7 @@ p:before {content: "I ate #{5 + 10} pies!";}=>p:before { content: "I ate 15 pies
 #### @for循环
 > @for $i from 开始值 throuth 结束值（包括结束值）
 > @for $i from 开始值 to 结束值（不包括结束值）
-```
+```css
 @for $i from 1 throuth 3{
     .item-#{$i}{width:(20px * $i)}
 }

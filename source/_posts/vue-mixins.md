@@ -22,7 +22,7 @@ summary: 混合对象可以包含任意组件选项。<br />当组件使用混�
 
 **先定义 mixin.js**
 
-```
+```javascript
 const mixins = {
   data() {
     return {
@@ -41,14 +41,14 @@ export defaullt mixins
 
 **在 main.js 文件全局引入**
 
-```
+```javascript
 import mixin from './mixin'
 Vue.mixin(mixin)
 ```
 
 **其他 vue 页面里面就可以使用 mixin 里面定义好的变量、方法，如：**
 
-```
+```javascript
 {{globalName}}  // 这是全局名称
 {{name}}        // abc
 data() {
@@ -63,9 +63,9 @@ data() {
 
 > 在组件的调用中，mixins 的数据是独立的、不想干扰的如：
 
-![在组件的调用中，mixins 的数据是独立的、不想干扰的](./vue-mixins/mixins1.gif)
+![在组件的调用中，mixins 的数据是独立的、不想干扰的](./mixins1.gif)
 
-```
+```html
 <template>
   <div>
     <child></child>
@@ -73,6 +73,8 @@ data() {
     <kid></kid>
   </div>
 </template>
+```
+```javascript
 <script>
 import Vue from "vue";
 import mixins2 from "./mixins2";
@@ -105,7 +107,7 @@ export default {};
 
 > methods 组件中调用 代替 mixins 中调用
 
-> 生命周期调用顺序![生命周期调用顺序](./vue-mixins/lifeCycle.png)
+> 生命周期调用顺序![生命周期调用顺序](./lifeCycle.png)
 
 ## 实践 1：状态码统一过滤
 
@@ -115,7 +117,7 @@ export default {};
 
 创建一个 config.js 文件，用于保存状态码对应的含义，将其暴露出去
 
-```
+```javascript
 export const typeConfig = {
   1: "type one",
   2: "type two",
@@ -125,7 +127,7 @@ export const typeConfig = {
 
 再创建一个 filters.js 文件，用于保存所有的自定义函数
 
-```
+```javascript
 import { typeConfig } from "./config"
 export default {
   filters: {
@@ -138,14 +140,14 @@ export default {
 
 最后，在 main.js 中引入我们的 filters 方法集
 
-```
+```javascript
 import filter from "./filters"
 Vue.mixin(filter)
 ```
 
 接下来，我们就可以在 .vue 的模板文件中随意使用自定义函数了
 
-```
+```html
 <template>
   <div>{{typeStatus | $_filterType}}<div>
 </template>
@@ -155,7 +157,7 @@ Vue.mixin(filter)
 
 简单通用混入 list.js
 
-```
+```javascript
 const list = {
   data () {
     return {
@@ -218,7 +220,7 @@ export default list
 
 下面我们直接在组件中使用这个 mixins
 
-```
+```javascript
 import mixin from '@/mixins/list' // 引入
 import {getList} from '@/api/demo'
 export default {
@@ -255,7 +257,7 @@ export default {
 
 有些时候我们有一些公共的数据它可能 3，4 个模块取使用但是又达不到全局的这种规模。这个时候我们就可以用 mixins 去管理他们，比如我们有几个模块要使用用户类型这个列表，我们来看使用 mixins 来实现共享。
 
-```
+```javascript
 // types.js
 import {getTypes} from '@/api/demo' // ajax
 export default {
@@ -284,7 +286,7 @@ export default {
 
 在组件中引用
 
-```
+```javascript
 import typeMixin from '@/mixins/types'
 export default {
   name: 'template',
@@ -302,7 +304,7 @@ export default {
 
 至于 mixins 中得数据我们可以在组件中直接使用
 
-```
+```html
 <el-select v-model="type" clearable placeholder="请选择类型">
   <el-option v-for="item in types" :key="item.id" :label="item.templateName" :value="item.id"></el-option>
 </el-select>
@@ -314,7 +316,7 @@ export default {
 
 mixinsExtends.js
 
-```
+```javascript
 //暴露两个mixins对象
 export const mixinsTest = {
   methods: {
@@ -359,11 +361,12 @@ export const extendsTest = {
 ```
 
 index.vue
-
-```
+```html
 <template>
   <div>home</div>
 </template>
+```
+```javascript
 <script>
 import { mixinsTest, mixinsTest2, extendsTest } from "./mixinsExtends";
 export default {
@@ -385,4 +388,4 @@ export default {
 ```
 
 > 运行结果
-> ![](./vue-mixins/mixinsExtends.png)
+> ![](./mixinsExtends.png)
