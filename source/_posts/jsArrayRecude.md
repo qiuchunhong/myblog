@@ -37,7 +37,7 @@ summary: reduce方法 && reduce实例
 - [更多...](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce)
 
 #### <font id="item1">数组求和</font>
-```
+```javascript
 (()=>{
     var total = [ 0, 1, 2, 3 ].reduce(
     ( acc, cur ) => acc + cur,
@@ -48,7 +48,7 @@ summary: reduce方法 && reduce实例
 ```
 
 #### <font id="item2">累加对象数组里的值</font>
-```
+```javascript
 (()=>{
     var sum = [{x: 1}, {x:2}, {x:3}].reduce(
         (accumulator, currentValue) => accumulator + currentValue.x
@@ -59,7 +59,7 @@ summary: reduce方法 && reduce实例
 ```
 
 #### <font id="item3">将二维数组转化为一维</font>
-```
+```javascript
 (()=>{
     var flattened = [[0, 1], [2, 3], [4, 5]].reduce(
     function(a, b) {
@@ -70,7 +70,7 @@ summary: reduce方法 && reduce实例
 ```
 
 #### <font id="item4">计算数组中每个元素出现的次数</font>
-```
+```javascript
 (()=>{
     var names = ['Alice', 'Bob', 'Tiff', 'Bruce', 'Alice'];
     var countNames = names.reduce((allNames,name)=>{
@@ -87,7 +87,7 @@ summary: reduce方法 && reduce实例
 ```
 
 #### <font id="item5">按属性对 object 分类</font>
-```
+```javascript
 (()=>{
     var people = [
     { name: 'Alice', age: 21 },
@@ -116,7 +116,7 @@ summary: reduce方法 && reduce实例
 ```
 
 #### <font id="item6">使用扩展运算符和 initialValue 绑定包含在对象数组中的数组</font>
-```
+```javascript
 (()=>{
     var friends = [{
         name: 'Anna',
@@ -141,7 +141,7 @@ summary: reduce方法 && reduce实例
 
 #### <font id="item7">数组去重</font>
 
-```
+```javascript
 (()=>{
     var myArray = ['a', 'b', 'a', 'b', 'c', 'e', 'e', 'c', 'd', 'd', 'd', 'd'];
     var res = myArray.reduce((acc,cur)=>{

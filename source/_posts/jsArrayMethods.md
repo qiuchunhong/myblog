@@ -90,7 +90,7 @@ slice(1,4) 会提取原数组中从第二个元素开始一直到第四个元素
 如果 end 大于数组的长度，slice 也会一直提取到原数组末尾。
 
 ### <font id="item5">slice 方法将一个类数组（Array-like）对象/集合转换成一个新数组</font>
-```
+```javascript
 function list() {
   return Array.prototype.slice.call(arguments);
 }

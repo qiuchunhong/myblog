@@ -4,6 +4,7 @@ categories: vue
 tags: [vue指令] #文章标签，可空，多标签请用格式，注意:后面有个空格
 summary: directive的使用以及记录指令的场景、实现
 ---
+> directive的使用以及记录指令的场景、实现
 
 ### 为什么要使用 VueDirective
 
@@ -18,7 +19,7 @@ summary: directive的使用以及记录指令的场景、实现
 
 **store 需要 import 进来**
 
-```
+```javascript
 const directive = Vue.directive('permission-click', {
   bind: (el, binding, vnode) => {
     el.addEventListener('click', (e) => {
@@ -47,7 +48,7 @@ directives: {
 
 > - v-loading 全局加载
 
-```
+```javascript
 <div v-loading="loading"></div>
 <div @click="showLoading">change loading status</div>
 methods: {
@@ -85,7 +86,7 @@ methods: {
 
 > - 根据路由角色控制 DOM **(一般是按钮多)** 是否显示
 
-```
+```javascript
  bind: function (el, binding, vnode) {
   // 获取按钮权限  路由中 meta 中的角色
   let btnPermissions = vnode.context.$route.meta.btnPermissions.split(",");
@@ -99,7 +100,7 @@ methods: {
 
 > - 根据后台下发 权限 字段，控制当前 DOM 是否展示
 
-```
+```javascript
  // 很多时候，服务器下发了  showBtn 字段就代表 显示某个 按钮，前端一般把控制权限的数据都放在内存中
  // 这样写 在 bind update 都会执行
 Vue.directive('check-permission', function (el, binding) {

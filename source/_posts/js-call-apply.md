@@ -5,7 +5,9 @@ tags: [js] #文章标签，可空，多标签请用格式，注意:后面有个�
 summary: call()、apply()、bind() 都是用来重定义this这个对象的。
 ---
 
-```
+> call()、apply()、bind() 都是用来重定义this这个对象的。
+
+```javascript
 let age = 3;
 let obj = {
     name:'Jerry',
@@ -25,12 +27,12 @@ obj.myFun.apply(db,['成都','上海']);   // Spike年龄：5, 来自成都去�
 obj.myFun.bind(db,'成都','上海')();   // Spike年龄：5, 来自成都去往上海
 obj.myFun.bind(db,['成都','上海'])();   // Spike年龄：5, 来自成都,上海去往undefined
 ```
-## 模拟实现 call 和 apply
+## 模拟实现 `call` 和 `apply`
 可以从以下几点来考虑如何实现
 - 不传入第一个参数，那么默认为 window
 - 改变了 this 指向，让新的对象可以执行该函数。那么思路是否可以变成给新的对象添加一个函数，然后在执行完以后删除？
 
-```
+```javascript
 Function.prototype.myCall = function(context){
   let c = context || window;
   c.fn = this;
@@ -45,12 +47,12 @@ let b = {
     console.log(`my name is ${this.name}, from ${f} to ${t}`);
   }
 }
-b.fn.myCall(null, "上海", "成都); // // my name is , from 上海 to 成都
-b.fn.myCall(undefined, "上海", "成都); // // my name is , from 上海 to 成都
+b.fn.myCall(null, "上海", "成都"); // // my name is , from 上海 to 成都
+b.fn.myCall(undefined, "上海", "成都"); // // my name is , from 上海 to 成都
 b.fn.myCall(a,'上海','成都');  // my name is lee, from 上海 to 成都
 ```
 
-```
+```javascript
 Function.prototype.myApply = function(context){
   let c = context || window;
   c.fn = this;
