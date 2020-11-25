@@ -1,8 +1,7 @@
 ---
 title: 记录一些小技巧
-categories: vue
-tags: [vue] #文章标签，可空，多标签请用格式，注意:后面有个空格
-summary: forceUpdate、git reset、
+categories: other
+tags: [小技巧] #文章标签，可空，多标签请用格式，注意:后面有个空格
 ---
 
 ## vue
@@ -38,3 +37,8 @@ window.addEventListener("resize", function() {
     }
 })
 ```
+
+
+## 浏览器
+
+> 浏览器是`60Hz`的刷新率，每`16ms`才会更新一次
