@@ -40,11 +40,13 @@ var featureImages = theme.featureImages;
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
-                        <% if (page.prev.summary && page.prev.summary.length > 0) { %>
-                            <%- page.prev.summary %>
-                        <% } else { %>
-                            <%- strip_html(page.prev.content).substring(0, 120) %>
-                        <% } %>
+                        <a href="<%- url_for(page.prev.path) %>">
+                            <% if (page.prev.summary && page.prev.summary.length > 0) { %>
+                                <%- page.prev.summary %>
+                            <% } else { %>
+                                <%- strip_html(page.prev.content).substring(0, 120) %>
+                            <% } %>
+                        </a>
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
@@ -100,11 +102,13 @@ var featureImages = theme.featureImages;
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
-                        <% if (page.summary && page.summary.length > 0) { %>
-                            <%- page.summary %>
-                        <% } else { %>
-                            <%- strip_html(page.content).substring(0, 120) %>
-                        <% } %>
+                        <a href="<%- url_for(page.path) %>">
+                            <% if (page.summary && page.summary.length > 0) { %>
+                                <%- page.summary %>
+                            <% } else { %>
+                                <%- strip_html(page.content).substring(0, 120) %>
+                            <% } %>
+                        </a>
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
@@ -162,11 +166,13 @@ var featureImages = theme.featureImages;
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
-                        <% if (page.next.summary && page.next.summary.length > 0) { %>
-                            <%- page.next.summary %>
-                        <% } else { %>
-                            <%- strip_html(page.next.content).substring(0, 120) %>
-                        <% } %>
+                        <a href="<%- url_for(page.next.path) %>">
+                            <% if (page.next.summary && page.next.summary.length > 0) { %>
+                                <%- page.next.summary %>
+                            <% } else { %>
+                                <%- strip_html(page.next.content).substring(0, 120) %>
+                            <% } %>
+                        </a>
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
@@ -222,11 +228,13 @@ var featureImages = theme.featureImages;
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
-                        <% if (page.summary && page.summary.length > 0) { %>
-                            <%- page.summary %>
-                        <% } else { %>
-                            <%- strip_html(page.content).substring(0, 120) %>
-                        <% } %>
+                        <a href="<%- url_for(page.path) %>">
+                            <% if (page.summary && page.summary.length > 0) { %>
+                                <%- page.summary %>
+                            <% } else { %>
+                                <%- strip_html(page.content).substring(0, 120) %>
+                            <% } %>
+                        </a>
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
