@@ -2,6 +2,7 @@
 title: 记录一些小技巧
 categories: other
 tags: [小技巧] #文章标签，可空，多标签请用格式，注意:后面有个空格
+top: true
 ---
 
 ## vue
@@ -65,12 +66,12 @@ window.addEventListener("resize", function() {
 
 1. vue key 作用 diff 算法
 2. vue 组件传参
-3. 实现 promise.allsettled
+3. [实现 promise.allsettled](/2020/12/01/js-promise/)
 4. css 垂直水平居中
 5. webpack 相关
 6. 闭包
-7. 原型链
-8. [commonjs 和 es6 模块的区别]('./commonjs-es6Module.md')
+7. [原型链](/2020/11/16/js原型/)
+8. [commonjs 和 es6 模块的区别](/2020/12/02/commonjs-es6Module/)
 9. 浏览器缓存
 10. 首屏加载
 11. 新需求下来，要做哪些准备

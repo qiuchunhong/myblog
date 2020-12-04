@@ -368,5 +368,25 @@ class MyPromise {
       }
     });
   }
+
+  static allSettled(allPromise) {
+    return new Promise((resolve) => {
+      let settled = 0;
+      let result = [];
+      let len = allPromise.length;
+      for (let i = 0; i < len; i++) {
+        allPromise[i]
+          .then((res) => {
+            result[index] = { status: "fulfilled", value: res };
+          })
+          .catch((err) => {
+            result[index] = { status: "rejected", reason: err };
+          })
+          .finally(() => {
+            ++settled === len && resolve(result);
+          });
+      }
+    });
+  }
 }
 ```
