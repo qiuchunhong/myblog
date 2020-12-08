@@ -57,6 +57,13 @@ window.addEventListener("resize", function() {
     }
 })
 ```
+> iphone x 高度:100%; 兼容设置
+1. 让客户端设置webview的高度为100%;
+2. html代码里面添加 viewport-fit=cover ，这个ios11的新属性可以使得页面内容完全覆盖整个窗口
+相关代码：
+```
+<meta name="viewport" content="width=device-width, viewport-fit=cover">
+```
 
 ## 浏览器
 
