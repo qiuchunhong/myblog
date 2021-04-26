@@ -11,6 +11,13 @@ top: true
 
 > 添加 this.$forceUpdate();进行强制渲染，效果实现
 
+### vue-cli 显示 webpack 配置文件命令：
+
+```
+vue inspect --mode=development > webpack.dev.js
+vue inspect --mode=production > webpack.prod.js
+```
+
 ---
 
 ## git
@@ -57,10 +64,13 @@ window.addEventListener("resize", function() {
     }
 })
 ```
+
 > iphone x 高度:100%; 兼容设置
-1. 让客户端设置webview的高度为100%;
-2. html代码里面添加 viewport-fit=cover ，这个ios11的新属性可以使得页面内容完全覆盖整个窗口
-相关代码：
+
+1. 让客户端设置 webview 的高度为 100%;
+2. html 代码里面添加 viewport-fit=cover ，这个 ios11 的新属性可以使得页面内容完全覆盖整个窗口
+   相关代码：
+
 ```
 <meta name="viewport" content="width=device-width, viewport-fit=cover">
 ```
@@ -84,3 +94,9 @@ window.addEventListener("resize", function() {
 11. 新需求下来，要做哪些准备
 12. babel webpack
 13. webpack 的 plugin 跟 loader
+
+## vscode 插件
+
+- `Npm Intellisense` 可自动完成导入语句中的 npm 模块
+- `Better Comments` 丰富注释颜色，让注释也具有生命力，如需自定义样式，需要写入配置代码
+- `Partial Diff` 文本对比工具，右击使用
