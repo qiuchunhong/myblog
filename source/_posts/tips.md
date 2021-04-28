@@ -18,6 +18,9 @@ vue inspect --mode=development > webpack.dev.js
 vue inspect --mode=production > webpack.prod.js
 ```
 
+### vue 不兼容ie哪个浏览器？
+> vue 不兼容ie8，因为在vue中的数据绑定、数组代理使用的defineProperty是es5的语法，不支持ie8
+
 ---
 
 ## git
