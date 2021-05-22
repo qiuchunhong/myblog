@@ -34,6 +34,16 @@ cd 文件夹名称
 git clone 路径
 ```
 
+### 项目中修改提交用户信息
+
+> 目录：.git/config
+
+```
+[user]
+	email = 527081722@qq.com
+	name = qiuchunhong
+```
+
 ### git 命令
 
 ##### 分支 branch
