@@ -16,3 +16,7 @@ summary: 记录一些有用的网站
 
 ## ide
 ### [Visual Studio文档 - 正则搜索](https://docs.microsoft.com/zh-cn/visualstudio/ide/using-regular-expressions-in-visual-studio?view=vs-2015&redirectedfrom=MSDN#Visual%20Studio%20%E4%B8%AD%E7%9A%84%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F)
+
+## github
+### github打开太慢怎么办
+- gitee 中搜索‘dev-sidecar’ 直接下载安装按照说明来，github秒开
