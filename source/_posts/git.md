@@ -129,3 +129,10 @@ git push --force
 
 
 ```
+
+### git报错解决方法
+
+> LibreSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443
+```
+git config --global http.sslBackend "openssl"
+```
