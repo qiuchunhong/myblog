@@ -1,0 +1,41 @@
+<%- partial('_partial/bg-cover') %>
+<style>
+    .friends-container {
+        margin-top: -100px;
+        margin-bottom: 30px;
+    }
+
+    .friends-container .tag-title {
+        margin-bottom: 10px;
+        color: #3C4858;
+        font-size: 1.75rem;
+        font-weight: 400;
+    }
+
+    .friend-all .tag-post {
+        margin-bottom: 30px;
+    }
+	
+    .card {
+        margin: 3rem 0 1rem 0 !important;
+    }
+
+</style>
+
+<main class="content">
+    <div class="container friends-container">
+        <div class="card">
+            <div class="card-content">
+                <div class="tag-title center-align">
+                    <i class="fas fa-book"></i>&nbsp;&nbsp;静态页面
+                </div>
+            </div>
+        </div>
+       <div class="card">
+            <div class="card-content">
+                <%- page.content %>
+            </div>
+        </div>
+    </div>
+</main>
+

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<h2>假如楼梯有n个台阶，每次可以走1个或2个台阶，请问走完这n个台阶有几种走法</h2>
+		<dl>
+			<dt>一个台阶:1</dt>
+			<dd>1</dd>
+			<dt>两个台阶:2</dt>
+			<dd>1-1</dd>
+			<dd>2</dd>
+			<dt>三个台阶:3</dt>
+			<dd>1-1-1</dd>
+			<dd>1-2</dd>
+			<dd>2-1</dd>
+			<dt>四个台阶:5</dt>
+			<dd>1-1-1-1</dd>
+			<dd>1-2-1</dd>
+			<dd>1-1-2</dd>
+			<dd>2-1-1</dd>
+			<dd>2-2</dd>
+			<dt>五个台阶:8</dt>
+			<dd>1-1-1-1-1</dd>
+			<dd>1-1-1-2</dd>
+			<dd>1-1-2-1</dd>
+			<dd>1-2-1-1</dd>
+			<dd>2-1-1-1</dd>
+			<dd>1-2-2</dd>
+			<dd>2-1-2</dd>
+			<dd>2-2-1</dd>
+			<dt>六个台阶:13</dt>
+			<dd>1-1-1-1-1-1</dd>
+			<dd>1-1-1-1-2</dd>
+			<dd>1-1-1-2-1</dd>
+			<dd>1-1-2-1-1</dd>
+			<dd>1-2-1-1-1</dd>
+			<dd>2-1-1-1-1</dd>
+			<dd>1-1-2-2</dd>
+			<dd>1-2-1-2</dd>
+			<dd>1-2-2-1</dd>
+			<dd>2-1-1-2</dd>
+			<dd>2-1-2-1</dd>
+			<dd>2-2-1-1</dd>
+			<dd>2-2-2</dd>
+		</dl>
+<pre>
+	// 方法一：
+	function climbStairs(n){
+		if (n === 1) return 1
+		if (n === 2) return 2
+		return climbStairs(n-1) + climbStairs(n-2)
+	}
+	console.log(climbStairs(6))
+	// 优化：
+	let saveClimb = []
+	function climbStairs(n){
+		if (n === 1) return 1
+		if (n === 2) return 2
+		if( !saveClimb[n-1] ){
+			saveClimb[n-1] = climbStairs(n-1)
+		}
+		if( !saveClimb[n-2] ){
+			saveClimb[n-2] = climbStairs(n-2)
+		}
+		return saveClimb[n-1] + saveClimb[n-2]
+	}
+	console.log(climbStairs(6))
+</pre>
+		
+		
+		
+		
+	<script type="text/javascript">
+		let saveClimb = []
+		function climbStairs(n){
+			if (n === 1) return 1
+			if (n === 2) return 2
+			if( !saveClimb[n-1] ){
+				saveClimb[n-1] = climbStairs(n-1)
+			}
+			if( !saveClimb[n-2] ){
+				saveClimb[n-2] = climbStairs(n-2)
+			}
+			return saveClimb[n-1] + saveClimb[n-2]
+		}
+		console.log(climbStairs(6))
+	</script>	
+	</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<h2>树型结构如下：</h2>
+<pre>
+	let data = [
+		{
+			label: '1231',
+			value: 1,
+			children: [
+				{
+					label: 'qwe2',
+					value: 2,
+					children: [
+						{
+							label: 'qwe4',
+							value: 4,
+							children: []
+						},
+						{
+							label: 'asd5',
+							value: 5,
+							children: []
+						}
+					]
+				},
+				{
+					label: 'asd3',
+					value: 3,
+					children: [
+						{
+							label: 'qwe6',
+							value: 6,
+							children: []
+						},
+						{
+							label: 'asd7',
+							value: 7,
+							children: []
+						}
+					]
+				}
+			]
+		}
+	];
+</pre>
+		<h2>要求整合成的结构如下：</h2>
+<pre>
+	{
+	    4:[{label: "1231", value: 1},{label: "qwe2", value: 2},{label: "qwe4", value: 4}],
+	    5:[{label: "1231", value: 1},{label: "qwe2", value: 2},{label: "asd5", value: 5}],
+	    6:[{label: "1231", value: 1},{label: "asd3", value: 2},{label: "qwe6", value: 6}],
+	    7:[{label: "1231", value: 1},{label: "asd3", value: 2},{label: "asd7", value: 7}],
+	}
+</pre>
+
+	<h2>方法一：</h2>
+<pre>
+	function f(data,arr=[]){
+		return data.reduce((pre,cur)=>{
+			let saveArr = [...arr];
+			let curObj = {...cur}
+			delete curObj.children;
+			saveArr.push(curObj);
+			if( cur.children && cur.children.length > 0){
+				return {...pre, ...f(cur.children,saveArr)};
+			}
+			return {...pre,[cur.value]:saveArr}
+			// return cur.children && cur.children.length > 0
+			// ? {...pre, ...f(cur.children,saveArr)}
+			// : {...pre,[cur.value]:saveArr}
+		},{})
+	}
+	console.log(f(data),'方法一')
+</pre>
+	<h2>方法二：</h2>	
+<pre>
+	function f2(data,arr=[],res={}){
+		return data.forEach(v=>{
+			obj = {...v}
+			delete obj.children;
+			arr.push(obj);
+			if( v.children && v.children.length > 0){
+				return f2(v.children,arr,res),arr.pop();
+			}
+			return res[v.value] = [...arr],arr.pop();
+		}),res
+	}
+	console.log(f2(data),'方法二')
+</pre>
+	</body>
+	<script type="text/javascript">
+		let data = [
+		    {
+		        label: '1231',
+		        value: 1,
+		        children: [
+		            {
+		                label: 'qwe2',
+		                value: 2,
+		                children: [
+		                    {
+		                        label: 'qwe4',
+		                        value: 4,
+		                        children: []
+		                    },
+		                    {
+		                        label: 'asd5',
+		                        value: 5,
+		                        children: []
+		                    }
+		                ]
+		            },
+		            {
+		                label: 'asd3',
+		                value: 3,
+		                children: [
+		                    {
+		                        label: 'qwe6',
+		                        value: 6,
+		                        children: []
+		                    },
+		                    {
+		                        label: 'asd7',
+		                        value: 7,
+		                        children: []
+		                    }
+		                ]
+		            }
+		        ]
+		    }
+		];
+		
+		// 方法一：
+		function f(data,arr=[]){
+			return data.reduce((pre,cur)=>{
+				let saveArr = [...arr];
+				let curObj = {...cur}
+				delete curObj.children;
+				saveArr.push(curObj);
+				if( cur.children && cur.children.length > 0){
+					return {...pre, ...f(cur.children,saveArr)};
+				}
+				return {...pre,[cur.value]:saveArr}
+				// return cur.children && cur.children.length > 0
+				// ? {...pre, ...f(cur.children,saveArr)}
+				// : {...pre,[cur.value]:saveArr}
+			},{})
+		}
+		console.log(f(data),'方法一')
+		
+		// 方法二：
+		function f2(data,arr=[],res={}){
+			return data.forEach(v=>{
+				obj = {...v}
+				delete obj.children;
+				arr.push(obj);
+				if( v.children && v.children.length > 0){
+					return f2(v.children,arr,res),arr.pop();
+				}
+				return res[v.value] = [...arr],arr.pop();
+			}),res
+		}
+		console.log(f2(data),'方法二')
+		
+
+		// 方法三：
+	</script>
+</html>
