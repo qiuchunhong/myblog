@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<h2>即如何把拍平得到[1,2,3,4,5]</h2>
+
+<pre>
+let arr = [1, [2], [3, [4, [5]]]];
+方法一：	
+function flatten(arr){
+	let operateArr = []
+	arr.forEach(item=>{
+		let type =  Object.prototype.toString.call(item).slice(8,-1)
+		if( type === 'Array' ){
+			operateArr = operateArr.concat(flatten(item)) 
+		}else{
+			operateArr.push(item)
+		}
+	})
+	return operateArr
+}
+console.log(flatten(arr), '方法一')
+
+方法二：
+function flatten2(arr,resArr=[]){
+	return arr.forEach(item=>{
+		let type =  Object.prototype.toString.call(item).slice(8,-1)
+		return type === 'Array'
+		? flatten2(item,resArr)
+		: resArr.push(item)
+	}),resArr
+}
+console.log(flatten2(arr), '方法二')
+</pre>
+		
+		<script type="text/javascript">
+			let arr = [1, [2], [3, [4, [5]]]];
+			function flatten(arr){
+				let operateArr = []
+				arr.forEach(item=>{
+					let type =  Object.prototype.toString.call(item).slice(8,-1)
+					if( type === 'Array' ){
+						operateArr = operateArr.concat(flatten(item)) 
+					}else{
+						operateArr.push(item)
+					}
+				})
+				return operateArr
+			}
+			console.log(flatten(arr), '方法一：普通递归')
+			
+			
+			function flatten2(arr,resArr=[]){
+				return arr.forEach(item=>{
+					let type =  Object.prototype.toString.call(item).slice(8,-1)
+					return type === 'Array'
+					? flatten2(item,resArr)
+					: resArr.push(item)
+				}),resArr
+			}
+			console.log(flatten2(arr), '方法二：递归优化')
+
+
+			function flatten3(arr){
+					while( arr.some(item => Array.isArray(item)) ){
+							// arr = [].concat.apply([], arr);
+							arr = [].concat(...arr);
+					}
+					return arr
+			}
+			console.log(flatten3(arr), '方法三：es6解构赋值')
+
+			function flatten4(arr){
+				return arr.reduce((pre,cur)=>{
+						return pre.concat( Array.isArray(cur) ? flatten4(cur) : cur);
+						// return Array.isArray(cur) ? [...pre, ...flatten4(cur)] : [...pre,cur]
+				},[])
+			}
+			console.log(flatten4(arr), '方法四：reduct + 递归')
+		</script>
+	</body>
+</html>
