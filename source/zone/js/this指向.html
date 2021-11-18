@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		正常函数，内部的this指向函数运行时所在的对象，除非利用call,apply等方法改变this指向
+		箭头函数，=它没有自己的this对象，内部的this就是定义时上层作用域中的this
+		<script type="text/javascript">
+			// var objA = {
+			// 	name: '张三',
+			// 	objAFunc: function() {
+			// 		console.log('姓名', this.name)
+			// 	}
+			// }
+			// var objB = {
+			// 	name: '李四',
+			// 	objBFun: function() {
+			// 		console.log('姓名', this.name)
+			// 	}
+			// }
+			
+			// objA.objAFunc()	// 姓名 张三
+			// objB.objBFun()	// 姓名 李四
+			// objA.objAFunc.call(objB)	// 姓名 李四
+			
+			
+			
+			var name = 'aa'
+			function a(){
+				var name='指向window'
+				var objA = {
+					name: '张三',
+					objAFunc: ()=> {
+						console.log('姓名', this.name)
+					}
+				}
+				var objB = {
+					name: '李四',
+					objBFun: ()=> {
+						console.log('姓名', this.name)
+					}
+				}
+				objA.objAFunc()	// 姓名 指向window
+				objB.objBFun()	// 姓名 指向window
+				objA.objAFunc.call(objB) // 姓名 指向window
+			}
+			a()
+			
+		</script>
+	</body>
+</html>

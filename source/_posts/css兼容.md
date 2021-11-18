@@ -39,3 +39,70 @@ input:disabled, input[disabled]{
 <div class="text-fill-color">text-fill-color</div>
 ```
 ![一个文字渐变效果](./gradient.png)
+
+### 文本超出省略号显示
+> 单行文本显示省略号
+```
+.ellipsis{
+	width: 500px;	/* 设置宽度，不设置默认为100% */
+	white-space: nowrap;	/* 强制文本在一行显示 */
+	overflow: hidden;	/* 隐藏溢出内容 */
+	text-overflow: ellipsis;	/* 溢出进行省略 */
+}
+```
+> 多行文本显示省略号 方法一：私有属性
+```
+.ellipsis2{
+	height: 120px;
+	line-height: 30px;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;	/* 朝向：垂直 */
+	-webkit-line-clamp: 4;
+}
+```
+> 多行文本显示省略号 方法二：在最后面加...
+```
+.ellipsis3{
+	height: 120px;
+	line-height: 30px;
+	overflow: hidden;
+	position: relative;
+	padding-right: 1em;
+	text-align: justify;
+}
+.ellipsis3::before{
+	content: '...';
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+.ellipsis3::after{
+	content: '';
+	width: 1em;
+	height: 2em;
+	background-color: red;
+	position: absolute;
+	display: inline;
+	right: 0;
+}
+```
+> 多行文本显示省略号 方法二：在最后面加渐变
+```
+.ellipsis4{
+	height: 120px;
+	line-height: 30px;
+	overflow: hidden;
+	position: relative;
+}
+.ellipsis4::after{
+	content: "";
+	width: 20%;
+	height: 30px;
+	background:linear-gradient(to right,rgba(255,255,255,0),#fff 80%);
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+```
+![文本超出省略号显示效果图](./ellipsis.png)
