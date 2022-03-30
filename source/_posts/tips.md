@@ -1,7 +1,7 @@
 ---
 title: 记录一些小技巧
 categories: other
-tags: [小技巧] #文章标签，可空，多标签请用格式，注意:后面有个空格
+tags: [小技巧 搜索过] #文章标签，可空，多标签请用格式，注意:后面有个空格
 top: true
 ---
 
@@ -129,6 +129,8 @@ body {
 11. 新需求下来，要做哪些准备
 12. babel webpack
 13. webpack 的 plugin 跟 loader
+14. ['1', '2', '3'].map(parseInt) 结果是什么
+15. flex 与 grid
 
 ----------------------------------
 
@@ -148,3 +150,35 @@ body {
 
 ![LRU算法](./lru.png)
 LRU 的核心思想是如果数据最近被访问过，那么将来被访问的几率也更高，所以我们将命中缓存的组件 key 重新插入到 this.keys 的尾部，这样一来，this.keys 中越往头部的数据即将来被访问几率越低，所以当缓存数量达到最大值时，我们就删除将来被访问几率最低的数据，即 this.keys 中第一个缓存的组件。
+
+
+## 微信小程序
+
+### 微信开发者工具配置
+```
+{
+	...
+    "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?",// 双击选中连字符
+    "editor.formatOnSave": true,	// 保存后实现自动格式化
+}
+
+```
+
+### 背景图不显示
+> 本地资源图片无法通过 WXSS 获取
+
+background-image : 可以使用网络图片，或者base64，或者使用<image />标签
+
+### image跟view标签上下会有间隙
+- 原因：
+图片文字等inline元素默许是跟父级元素的baseline对齐，而baseline又和父级底边有必定间距
+
+- 解决方案
+	- 方法一 将图片转换为块级对象即，设置img为：
+```css
+	display:block;
+```
+	- 方法二 设置图片对齐方式
+```css
+  vertical-align: top;
+```

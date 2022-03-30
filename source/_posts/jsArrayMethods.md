@@ -12,7 +12,7 @@ summary:
 - unshift   数组开始添加元素
 - shift     删除数组开始元素
 - [splice   实现数组的增加、删除、修改](#item1)
-- sort  数组排序
+- [sort  数组排序](#item6)
 - reverse   数组倒序
 
 [删除数组末尾一项的几种方法](#item2)
@@ -20,7 +20,7 @@ summary:
 
 ### 不改变原数组的方法
 - [slice - 由begin和end决定的原数组的浅拷贝](#item4) 
-- concat 拼接两个数组
+- concat 拼接两个数组：基本类型深拷贝，引用类型浅拷贝
 - toString()  数组转字符串，转换后用逗号分隔
 - join 数组转字符串 未指定分隔符用逗号分隔
 - indexOf/lastIndexOf 检测当前项的index值 - ary.indexOf(val)
@@ -95,4 +95,83 @@ function list() {
   return Array.prototype.slice.call(arguments);
 }
 var list1 = list(1, 2, 3); // [1, 2, 3]
+```
+
+### ['1', '2', '3'].map(parseInt) 结果是什么？
+- Array.prototype.map这是数组实例方法，给map传入一个回调函数，map会遍历数组元素，将相关信息一起传入回调函数，并取这个回调函数的返回值做为新数组对应索引的值，并将这个新数组返回
+```javascript
+	// 实现一下 Array.prototype.map
+	Array.prototype.myMap = function(callbackfn) {
+		const arr = this;
+		const newArr = new Array(arr.length);
+		for(let i=0;i<arr.length;i++){
+			newArr[i] = callbackArr(arr[i],i,arr);
+		}
+		return newArr;
+	}
+```
+- parseInt 函数的作用是将一个字符串转换为数字
+> parseInt(string [, radix]) 接受两个参数，第一个参数是我们需要转换的字符串。第二个参数是字符串的基数 radix，比如是 2 的话，就代表字符串是用二进制表达的。
+>
+> 第二个参数如果省略，情况会变得复杂。如果字符串以 0x 或 0X 开头，它就会当作十六进制，否则被当作十进制
+```js
+	parseInt('1', 0);
+	// 1    特殊情况，等价于parseInt('1')
+	
+	parseInt('2', 1);
+	// NaN  没有一进制这种东西
+	
+	parseInt('3', 2);
+	// NaN  没能找到合法字符，虽然 3 是数字，但它无法用来表达二进制，二进制只能为 0 和 1。
+```
+
+
+所以 ['1', '2', '3'].map(parseInt) 的结果是[1, NaN, NaN]
+
+正确写法：
+```js
+['1', '2', '3'].map((item)=>parseInt(item))
+```
+
+### 二进制转换方法
+十转二：134
+方法：采用"除2取余，逆序排列"法
+```
+	134/2	余0
+	67/2	余1
+	33/2	余1
+	16/2	余0
+	8/2		余0
+	4/2		余0
+	2/2		余0
+	1		1
+结果：10000110
+	
+```
+
+二转十：1011011
+```
+1*2^0 + 1*2^1 + 0*2^3 + 1*2^4 + 1*2^5 + 0*2^6 + 1*2^7
+= 1 + 2 + 0 + 8 + 16 + 64
+= 91
+```
+
+### <font id="item6">sort排序</font>
+
+> 默认排序为字母的升序排序(首字母相同比第二字母，以此类推)
+> 注意：当数字是按字母顺序排列时"40"将排在"5"前面
+
+```javascript
+	// 升序 ：1,5,10,25,40,100
+	var points = [40,100,1,5,25,10];
+	points.sort(function(a,b){return a-b});
+	
+	// 降序 100,40,25,10,5,1
+	var points = [40,100,1,5,25,10];
+	points.sort(function(a,b){return b-a});
+	
+	// 字母默认升序
+	var fruits = ["Banana", "Abple","Aaple","Acple", "Mango"]
+	fruits.sort();	// 升序：Aaple,Abple,Acple,Banana,Mango
+	fruits.reverse();// 降序： Mango,Banana,Acple,Abple,Aaple
 ```

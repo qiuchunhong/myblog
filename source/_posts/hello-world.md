@@ -6,6 +6,13 @@ Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [docume
 
 ## Quick Start
 
+<details>
+	<summary>展开查看</summary>
+	<pre><code>
+	System.out.println("Hello to see U!");
+	</code></pre>
+</details>
+
 ### Create a new post
 
 ```bash
