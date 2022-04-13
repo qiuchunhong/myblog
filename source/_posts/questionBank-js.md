@@ -199,7 +199,9 @@ this的指向：
 - bind()是创建一个新的函数，需要手动调用才会执行
 - 如果call、apply、bind接收到的第一个参数是空或者null、undefined的话，则会忽略这个参数
 - forEach、map、filter函数的第二个参数也是能显式绑定this的
+
 ### <font id="item5">this指向错题集</font>
+
 #### 题一
 ```javascript
 function foo () {
@@ -212,14 +214,15 @@ function doFoo (fn) {
 var obj = { a: 1, foo }
 var a = 2
 var obj2 = { a: 3, doFoo }
-
 obj2.doFoo(obj.foo)
 // 结果
 // { a:3, doFoo: f }
 // 2
 ```
+
 #### 题一延伸
 > 如果你把一个函数当成参数传递到另一个函数的时候，也会发生隐式丢失的问题，且与包裹着它的函数的this指向无关。在非严格模式下，会把该函数的this绑定到window上，严格模式下绑定到undefined。
+
 ```javascript
 "use strict"
 function foo () {
@@ -232,13 +235,13 @@ function doFoo (fn) {
 var obj = { a: 1, foo }
 var a = 2
 var obj2 = { a: 3, doFoo }
-
 obj2.doFoo(obj.foo)
 // 结果
 // { a:3, doFoo: f }
 // Uncaught TypeError: Cannot read property 'a' of undefined
 
 ```
+
 #### 题二
 ```javascript
 function foo () {
@@ -246,7 +249,6 @@ function foo () {
 }
 var obj = { a: 1 }
 var a = 2
-
 foo()	// window.foo()	a=2
 foo.call(obj)	// foo的this指向obj a=obj.a=1
 foo().call(obj)	// 开始会执行foo()函数，打印出2，但是会对foo()函数的返回值执行.call(obj)操作，可是我们可以看到foo()函数的返回值是undefined，因此就会报错了。
@@ -263,14 +265,16 @@ function foo () {
 }
 var obj = { a: 1 }
 var a = 2
-
 foo()
 foo.call(obj)
 foo().call(obj)
 结果：2 1 2 1
 ```
+
 #### 题三 
+
 > 不能用箭头函数定义对象的方法，this指向window
+
 ```javascript
 var obj = {
   name: 'obj',
@@ -299,6 +303,7 @@ var obj = {
 var name = 'window'
 obj.foo1()
 ```
+
 #### 题四
 ```javascript
 var name = 'window'
@@ -314,6 +319,7 @@ function Person (name) {
 person1.foo1()	// person1
 person1.foo2()	// person1
 ```
+
 #### 题五
 ```javascript
 var name = 'window'
@@ -335,7 +341,6 @@ function Person (name) {
 }
 var person1 = new Person('person1')
 var person2 = new Person('person2')
-
 person1.obj.foo1()()	// window
 person1.obj.foo1.call(person2)()	// window
 person1.obj.foo1().call(person2)	// person2
@@ -344,6 +349,7 @@ person1.obj.foo2()()	// obj
 person1.obj.foo2.call(person2)()	// person2
 person1.obj.foo2().call(person2)	// obj
 ```
+
 #### 题六
 ```javascript
 function foo() {
