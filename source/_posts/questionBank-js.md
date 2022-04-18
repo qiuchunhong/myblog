@@ -364,7 +364,7 @@ var a = 2;
 我们知道，使用了<code>"use strict"</code>开启严格模式会使得"use strict"以下代码的<code>this</code>为<code>undefined</code>，也就是这里的立即执行函数中的this是undefined。
 但是调用<code>foo()</code>函数的依然是<code>window</code>，所以foo()中的this依旧是window，所以会打印出<code>2</code>。
 如果你是使用<code>this.foo()</code>调用的话，就会报错了，因为现在立即执行函数中的this是undefined。
-或者将"use strict"放到foo()函数里面，也会报错。
+或者将<code>"use strict"</code>放到<code>foo()</code>函数里面，也会报错。
 
 
 ### 箭头函数避免使用的场景
