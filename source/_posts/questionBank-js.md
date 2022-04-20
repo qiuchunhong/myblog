@@ -11,6 +11,7 @@ tags: js 整合
 - [箭头函数与普通函数的区别](#item4)
 - [this指向错题集](#item5)
 - [箭头函数避免使用的场景](#item6)
+- [js的new操作符到底做了什么？](#new)
 
 ### <font id="item0">数据类型</font>
 值类型(基本类型)：字符串（String）、数字(Number)、布尔(Boolean)、对空（Null）、未定义（Undefined）、Symbol。
@@ -403,4 +404,19 @@ button.addEventListener('click', () => {
     console.log(this === window); // => true
     this.innerHTML = 'Clicked button';
 });
+```
+
+
+### <font id="new">js的new操作符到底做了什么？</font>
+```javascript
+function creat(Constructor,...arg){
+  // 1.创建一个空的对象
+  let obj = {};
+  // 2.将空对象obj的__proto__属性指向构造函数的原型对象
+  obj.__proto__ = Constructor.prototype;
+  // 3.改变构造函数的this指向，并将剩余的参数传入
+  let result = Constructor.apply(obj,arg);
+  // 4.判断result是否是引用数据类型，如果是引用数据类型返回result，如果是基础数据类型返回空对象
+  return result instanceof Object ? result : obj;
+}
 ```
