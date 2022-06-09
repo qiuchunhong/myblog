@@ -19,14 +19,14 @@ summary:
 [向数组末尾追加项的几种方法](#item3)
 
 ### 不改变原数组的方法
-- [slice - 由begin和end决定的原数组的浅拷贝](#item4) 
+- [slice - 由begin和end决定的原数组的拷贝,基本类型深拷贝，引用类型浅拷贝](#item4) 
 - concat 拼接两个数组：基本类型深拷贝，引用类型浅拷贝
 - toString()  数组转字符串，转换后用逗号分隔
 - join 数组转字符串 未指定分隔符用逗号分隔
 - indexOf/lastIndexOf 检测当前项的index值 - ary.indexOf(val)
 - includes 检测数组是否包含某项 ary.includes(val)=>true||false
 - forEach 遍历数组中每一项，无返回值
-- map 数组映射 支持返回值 新数组跟旧数组长度一样
+- map 数组映射 支持返回值 新数组跟旧数组长度一样（包括undefined），不可以中断
 - [reduce 累加器](https://qiuchunhong.github.io/2020/06/21/jsArrayRecude/)
 - filter((val,index,array)=>{ return }) 过滤
 - find 返回数组中满足提供的测试函数的第一个元素的值。否则返回 undefined。arr.find( (element,index,arry)=>{return} )
@@ -34,6 +34,7 @@ summary:
 - some 一项条件成立就返回true都不成立返回false。arr.some(callback(element[, index[, array]])[, thisArg])
 - every 所有的都成立才返回true,有一项不成立返回false。arr.every(callback(element[, index[, array]])[, thisArg])
 - [flat 扁平化 newArray = arr.flat([depth]) depth默认1，Infinity](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/flat)
+
 
 [slice 方法将一个类数组（Array-like）对象/集合转换成一个新数组](#item5)
 ************
@@ -75,7 +76,8 @@ summary:
 
 
 ### <font id="item4">slice</font>
-> slice() 方法返回一个新的数组对象，这一对象是一个由 begin 和 end 决定的原数组的浅拷贝（包括 begin，不包括end）。原始数组不会被改变。
+> slice() 方法返回一个新的数组对象，这一对象是一个由 begin 和 end 决定的原数组的拷贝（包括 begin，不包括end）基本类型深拷贝，引用类型浅拷贝。原始数组不会被改变。
+
 
 > **begin**<font color=red>【可选】</font>
 提取起始处的索引（从 0 开始），从该索引开始提取原数组元素。

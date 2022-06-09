@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		右击查看原码<br><br><br><br>
+		<a href="/2022/06/08/js-深拷贝/">查看文档</a>
+		<script>
+			const target = null;
+			const target2 = {
+				a: {
+					b1: 2,
+					b2: 5,
+				},
+				b: [1, 2, {
+					c1: 3,
+					c2: 4
+				}],
+				c: 1,
+				d: Symbol(123),
+				e: undefined,
+				f: null,
+				g: () => {},
+				h: new Date(),
+				i: /123/gi,
+				j: Object(Symbol(45)),
+				k: new Error('wrong'),
+				l: new URL('https://www.baidu.com:80/#/index'),
+				m: new Number(12),
+				n: new String('23'),
+				o: new Boolean('23'),
+				p: BigInt('23'),
+				q: Object(BigInt('23')),
+				r: new ArrayBuffer(10),
+				s: new Int8Array(10),
+			}
+			const target3 = {
+				field1: 1,
+				field2: undefined,
+				field3: {
+					child: 'child'
+				},
+				field4: [2, 4, 8]
+			};
+			const target4 = {
+				field1: 1,
+				field2: undefined,
+				field3: {
+					child: 'child'
+				},
+				field4: [2, 4, 8],
+				empty: null,
+				map: new Map(),
+				set: new Set([1, 2, 4]),
+			};
+			target4.map.set({
+				'a': 'b'
+			}, 'val')
+
+			function clone(target, map = new WeakMap()) {
+				// 解决对象、数组、循环引用问题
+				if (typeof target !== 'object' || target === null) {
+					return target
+				} else {
+					let cloneTarget = Array.isArray(target) ? [] : {};
+					if (map.get(target)) {
+						return map.get(target)
+					}
+					map.set(target, cloneTarget)
+					for (const key in target) {
+						cloneTarget[key] = clone(target[key], map)
+					}
+					return cloneTarget
+				}
+			}
+			// target3.target = target3
+			// console.log(clone(target3))
+
+			function clone2(target, map = new WeakMap()) {
+				if (typeof target !== 'object' || target === null) {
+					return target
+				} else {
+					let Const = target.constructor;
+					let cloneTarget;
+					// 引用类型分类
+					let type = Object.prototype.toString.call(target).slice(8, -1);
+
+					if (['Array', 'Object', 'Map', 'Set', 'Argument'].includes(type)) {
+						cloneTarget = new Const();
+						if (map.get(target)) {
+							return map.get(target)
+						}
+						map.set(target, cloneTarget)
+						// 可遍历引用类型：
+						if (type === 'Array' || type === 'Object' || type === 'Argument') {
+							for (const key in target) {
+								cloneTarget[key] = clone2(target[key], map)
+							}
+						}
+						if (type === 'Map') {
+							target.forEach((v, k) => {
+								cloneTarget.set(k, clone2(v, map))
+							})
+						}
+						if (type === 'Set') {
+							target.forEach(v => {
+								cloneTarget.add(clone2(v, map))
+							})
+						}
+						return cloneTarget
+					} else {
+						// 不可遍历引用类型：
+						switch (type) {
+							case 'Boolean':
+							case 'Number':
+							case 'String':
+							case 'Error':
+							case 'Date':
+								return new Const(target);
+							case 'RegExp':
+								return cloneReg(target);
+							case 'Symbol':
+								return Object(Symbol.prototype.valueOf.call(target));;
+							case 'URL':
+								return new Const(target.href)
+							case 'DataView':
+								return new Const(target.buffer.slice(0), target.byteOffset, target.byteLength)
+							case 'BigInt':
+								return Object(Const.prototype.valueOf.call(target))
+							default:
+								return CloneOther(target, type);
+						}
+					}
+				}
+
+			}
+
+			function CloneOther(target, type) {
+				let result = null;
+				if (type.includes('Array')) {
+					// ArrayBuffer TypeArray BigArray ...
+					result = target.slice()
+				} else if (type.includes('Function')) {
+					// Function AsyncFunction GeneratorFunction
+					result = target
+				}
+				return result
+			}
+
+			function cloneReg(target) {
+				const result = new target.constructor(target.source, /\w*$/.exec(target));
+				result.lastIndex = target.lastIndex;
+				return result;
+			}
+			
+			target2.target = target2
+			console.log(clone2(target2))
+		</script>
+	</body>
+</html>
