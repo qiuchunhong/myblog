@@ -166,3 +166,5 @@ function cloneReg(target) {
 target2.target = target2
 console.log(clone2(target2))
 ```
+
+[来源：https://juejin.cn/post/6844903929705136141#heading-10](https://juejin.cn/post/6844903929705136141#heading-10)

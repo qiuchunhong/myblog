@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+				list-style: none;
+				box-sizing: border-box;
+			}
+
+			li {
+				text-align: center;
+				line-height: 60px;
+				border-bottom: 1px solid red;
+			}
+		</style>
+		<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.13/vue.min.js"></script>
+	</head>
+
+	<body>
+		<h3>项目列表数据越来越多(上万条)，正常列表可以分页，但是像下拉框之类组件就不能分页。每次都要加载所有的(很慢)，性能不好的浏览器特别卡顿。虚拟滚动的技术完美解决。</h3>
+		
+		<h4>主要用于无法使用分页功能的长列表首屏加载速度慢问题，DOM加载过多“无用”元素。</h4>
+		<div id="app">
+			<div class="box" :style="`height:${viewH}px;overflow-y:scroll;`" @scroll="handleScroll">
+				<ul>
+					<li :style="`transform:translateY(${offsetY}px); height:${itemH}px;`" v-for='i in clist' :key="i">
+						{{i}}
+					</li>
+				</ul>
+			</div>
+		</div>
+		<script>
+			let list = []
+			for (let index = 0; index < 10000; index++) {
+				list.push(index)
+			}
+			new Vue({
+				el: '#app',
+				data() {
+					return {
+						viewH: 500, // 外部box高度
+						itemH: 60, // 单项高度
+						list, //上万条总数据
+						clist: [], // 页面展示数据
+						showNum: 0, //可视化高度一次能装几个列表
+						offsetY: 0 // 动态偏移量
+					}
+				},
+				mounted() {
+					// 计算可视化高度一次能装几个列表, 多设置几个防止滚动时候直接替换
+					this.showNum = Math.floor(this.viewH / this.itemH) + 4;
+					// 默认展示几个
+					this.clist = this.list.slice(0, this.showNum);
+					this.lastTime = new Date().getTime();
+				},
+				methods: {
+					handleScroll(e) {
+						if (new Date().getTime() - this.lastTime > 10) {
+							let scrollTop = e.target.scrollTop; // 滚去的高度
+							// 每一次滚动后根据scrollTop值获取一个可以整除itemH结果进行偏移
+							// 例如: 滚动的scrllTop = 1220  1220 % this.itemH = 20  offsetY = 1200
+							const offsetY = scrollTop - (scrollTop % this.itemH);
+							if (offsetY === this.offsetY) return;
+							this.offsetY = offsetY;
+							//上面卷掉了多少，就要往下平移多少，不然showNum滚出可视区外了
+							// console.log(scrollTop, scrollTop % this.itemH);
+							this.clist = this.list.slice(
+								Math.floor(scrollTop / this.itemH), // 计算卷入了多少条
+								Math.floor(scrollTop / this.itemH) + this.showNum
+							)
+							this.lastTime = new Date().getTime();
+						}
+					}
+				},
+			})
+		</script>
+	</body>
+</html>
