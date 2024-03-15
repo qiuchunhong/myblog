@@ -129,7 +129,7 @@ body {
 11. 新需求下来，要做哪些准备
 12. babel webpack
 13. webpack 的 plugin 跟 loader
-14. ['1', '2', '3'].map(parseInt) 结果是什么
+14. [['1', '2', '3'].map(parseInt) 结果是什么](/2020/12/09/jsArrayMethods/#mapParseInt)
 15. flex 与 grid
 
 ----------------------------------

@@ -99,7 +99,7 @@ function list() {
 var list1 = list(1, 2, 3); // [1, 2, 3]
 ```
 
-### ['1', '2', '3'].map(parseInt) 结果是什么？
+### <font id="mapParseInt">['1', '2', '3'].map(parseInt) 结果是什么？</font>
 - Array.prototype.map这是数组实例方法，给map传入一个回调函数，map会遍历数组元素，将相关信息一起传入回调函数，并取这个回调函数的返回值做为新数组对应索引的值，并将这个新数组返回
 ```javascript
 	// 实现一下 Array.prototype.map

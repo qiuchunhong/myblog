@@ -24,3 +24,13 @@ top: true
 ## github
 ### github打开太慢怎么办
 [gitee 中搜索‘dev-sidecar’ 直接下载安装按照说明来，github秒开](https://gitee.com/docmirror/dev-sidecar?_from=gitee_search)
+
+
+## npmjs.com
+### 截图 html2canvas
+
+## webpack插件
+### webpack-bundle-analyzer 
+> webpack-bundle-analyzer是webpack的插件，需要配合webpack和webpack-cli一起使用。这个插件可以读取输出文件夹（通常是dist）中的stats.json文件，把该文件可视化展现，生成代码分析报告，可以直观地分析打包出的文件有哪些，及它们的大小、占比情况、各文件 Gzipped 后的大小、模块包含关系、依赖项等，对应做出优化，从而帮助提升代码质量和网站性能。
+### webpack-unused-scaner
+> A webpack plugin to find unused modules/source files and remove them.

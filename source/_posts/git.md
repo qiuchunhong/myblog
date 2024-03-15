@@ -130,6 +130,14 @@ git push --force
 
 ```
 
+### 修改已经push的commit信息
+```
+1. 使用git commit --amend命令，会进入到vim编辑器
+2. 输入【i】，即进入编辑模式，此时编辑提交信息
+3. 编辑好之后，按键【Esc】，输入【:wq】，即保存和退出。
+4. 输入【git push -f】强制提交
+```
+
 ### git报错解决方法
 
 > LibreSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443
